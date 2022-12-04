@@ -1,0 +1,62 @@
+.card {
+    width: 440px
+}
+
+.card-image {
+    height: 300px;
+    width: 410px;
+    object-fit: cover;
+}
+
+.separator {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.bottom-separator{
+    margin-top: 20px;
+}
+
+.bottom-margin{
+   margin-bottom: 10px
+}
+
+.button-margin{
+    margin-right: -35px;
+   
+}
+
+.button-center{
+    
+    margin-bottom: auto;
+}
+
+.grid-Style{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    height:70%;
+}
+
+.grid-Box{
+    margin: 60px;
+}
+
+.text-box {
+    margin-top: 80px;
+    padding: 5px;
+    font-size: 1.6em;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.large-text{
+font:bold;
+font-size: 1.7em
+}
+
+.small-text{
+    font-size: 0.6em ;
+    color: gray;
+}

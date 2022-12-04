@@ -1,0 +1,55 @@
+<div class="text-box">
+
+    <h1 class="large-text">
+        Create your ArtHub
+    </h1>
+    <p class="small-text">
+        Explore,Rate,Submit your Art!
+    </p>
+</div>
+<mat-grid-list cols="3" gutterSize="5px"> 
+    <mat-grid-tile>
+            <mat-card class="card grid-Box">
+                <mat-card-header>
+                    <mat-card-title class="bottom-margin">Card Number 1</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <img mat-card-image class="card-image" src="../assets/img/art1.jpg" />
+
+                    <p class="separator">
+                        Created By: Placeholder:John
+                    </p>
+                    <h5>
+                        Category: Art
+                    </h5>
+                    <div>
+                        <ngx-stars (ratingOutput)="onRatingSet($event)"></ngx-stars>
+                    </div>
+                </mat-card-content>
+                <mat-expansion-panel class="bottom-separator">
+                    <mat-expansion-panel-header>Description:</mat-expansion-panel-header>
+                    <mat-panel-description>
+
+                        <p>
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                        </p>
+
+
+                        <div class="button-center">
+                            <button mat-icon-button color="gray" aria-label="Edit Button">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </div>
+                        <div class="button-center">
+                            <button mat-icon-button color="accent" class="button-margin" mat-icon-button
+                                aria-label="Delete Button">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel>
+            </mat-card>
+       
+    </mat-grid-tile>
+</mat-grid-list>
