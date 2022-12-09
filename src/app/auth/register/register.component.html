@@ -1,32 +1,44 @@
 <div class="grid-Style">
-    <mat-card class="card">
-        <mat-card-header class="title">Sign Up</mat-card-header>
-        <mat-card-content class="box">
+    <form [formGroup]="registerFrom" (ngSubmit)="formSubmit()">
+        <mat-card class="card">
+            <mat-card-header class="title">Sign Up</mat-card-header>
+            <mat-card-content class="box">
 
-            <mat-form-field class="form-field box">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="Password" value="">
-            </mat-form-field>
-            <mat-form-field class="form-field box">
-                <mat-label>Username</mat-label>
-                <input matInput placeholder="Password" value="">
-            </mat-form-field>
+                <mat-form-field class="form-field box">
+                    <mat-label>Email</mat-label>
+                    <input matInput value=""  formControlName="email" required>
+                        <mat-error *ngIf="registerFrom.get('email')?.errors?.['required']">Email is required!</mat-error>
+                        <mat-error *ngIf="registerFrom.get('email')?.errors?.['email']">Invalid Email!</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-field box">
+                    <mat-label>Username</mat-label>
+                    <input matInput value="" formControlName="username" required>
+                    <mat-error *ngIf="registerFrom.get('username')?.errors?.['required']">Username is required!</mat-error>
+                    <mat-error *ngIf="registerFrom.get('username')?.errors?.['minlength']">Username must be at least 5 characters long!</mat-error>
+                </mat-form-field>
 
-            <mat-form-field class="form-field box">
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" value="">
-            </mat-form-field>
+                <mat-form-field class="form-field box">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="showPassword ? 'text' : 'password'" value="" formControlName="password">
+                    <mat-icon matSuffix (click)="togglePasswordVisibility()"> {{showPassword?'visibility_off':'visibility'}}</mat-icon>
+                    <mat-error *ngIf="registerFrom.get('password')?.errors?.['required']">Password is required!</mat-error>
+                    <mat-error *ngIf="registerFrom.get('password')?.errors?.['minlength']">Password must be at least 5 characters long!</mat-error>
+                </mat-form-field>
 
-            <mat-form-field class="form-field box">
-                <mat-label>Repeat Password</mat-label>
-                <input matInput placeholder="Password" value="">
-            </mat-form-field>
+                <mat-form-field class="form-field box">
+                    <mat-label>Repeat Password</mat-label>
+                    <input matInput value="" formControlName="repass" required>
+                    <mat-error *ngIf="registerFrom.get('repass')?.errors?.['required']">Repeat password is required!</mat-error>
+                    <mat-error *ngIf="registerFrom.get('repass')?.errors?.['mustMatch']">Passwords do not match!</mat-error>
+                </mat-form-field>
 
-        </mat-card-content>
-        <div class="container">
-            <div class="center">
-                <a mat-flat-button color="accent">Sign Up</a>
+            </mat-card-content>
+            <div class="container">
+                <div class="center">
+                    <a mat-flat-button color="accent" type="submit" (click)="formSubmit()">Sign Up</a>
+                </div>
             </div>
-        </div>
-    </mat-card>
+        </mat-card>
+    </form>
 </div>
+{{registerFrom.value | json}}

@@ -1,0 +1,51 @@
+<div class="grid-Style">
+    <form [formGroup]="artSubmitFrom" (ngSubmit)="formSubmit()">
+        <mat-card class="card">
+            <mat-card-header class="title">Submit Your Art</mat-card-header>
+            <mat-card-content class="box">
+
+                <mat-form-field class="form-field box">
+                    <mat-label>Title</mat-label>
+                    <input matInput value="" formControlName="title" required>
+                    <mat-error *ngIf="artSubmitFrom.get('artName')?.errors?.['required']">Name is required!</mat-error>
+                    <mat-error *ngIf="artSubmitFrom.get('artName')?.errors?.['minlength']">Art Name must be at least 5
+                        characters long!</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-field box">
+                    <mat-label>Picture URL</mat-label>
+                    <input matInput value="" formControlName="imageUrl" placeholder="https://"required>
+                    <mat-error *ngIf="artSubmitFrom.get('artPicture')?.errors?.['required']">Please add picture!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-field box">
+                    <mat-label>Category</mat-label>
+                    <mat-select matInput value="" formControlName="category" required>
+                        <mat-option value="Photography">Photography</mat-option>
+                        <mat-option value="Painting">Painting</mat-option>
+                        <mat-option value="Sculpture">Sculpture</mat-option>
+                        <mat-option value="Architecture">Architecture</mat-option>
+                        <mat-option value="Music Cover">Music Cover</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form-field box">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput value="" formControlName="descriptions" required placeholder=""></textarea>
+                    <mat-error *ngIf="artSubmitFrom.get('descriptions')?.errors?.['required']">Descriptions password is
+                        required!</mat-error>
+                    <mat-error *ngIf="artSubmitFrom.get('descriptions')?.errors?.['minlength']">Descriptions must be at
+                        least 10 characters long!</mat-error>
+
+                </mat-form-field>
+
+            </mat-card-content>
+            <div class="container">
+                <div class="center">
+                    <a mat-flat-button color="accent" type="submit">Submit</a>
+                </div>
+            </div>
+        </mat-card>
+    </form>
+</div>
+{{artSubmitFrom.value | json}}

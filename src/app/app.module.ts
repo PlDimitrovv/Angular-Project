@@ -7,8 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
+import { ArtModule } from './art/art.module';
 import { RouterModule } from '@angular/router';
-
+import { HttpClientModule } from '@angular/common/http';
+import { appInterceptorProvider } from './app.interceptors';
 
 
 @NgModule({
@@ -22,9 +24,13 @@ import { RouterModule } from '@angular/router';
     CoreModule,
     AuthModule,
     HomePageModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule,
+    ArtModule
   ],
-  providers: [],
+  providers: [
+    appInterceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

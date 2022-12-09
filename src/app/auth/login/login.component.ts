@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from "../auth.service"
 
 @Component({
   selector: 'app-login',
@@ -8,25 +9,27 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Email is required!';
-    }
+  errors: string | undefined = undefined;
 
-    return this.email.hasError('email') ? 'Email is not valid!' : '';
+  loginForm = this.FormBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+
+  })
+
+  constructor(private FormBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+
+
+  formSubmit(): void {
+    this.authService.login(this.loginForm.value).subscribe({
+      next: () => this.router.navigate(['/']),
+      error:(err) => {
+        this.errors = err.error.error
+      }
+    })
   }
 
-  getPasswordErrorMessage() {
-
-    if (this.password.hasError('required')) {
-      return 'Password is required!';
-    }
-
-    return this.password.hasError('password') ? 'Password is not valid!' : '';
-  }
 }
 
 

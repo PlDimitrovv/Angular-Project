@@ -1,31 +1,29 @@
 <div class="grid-Style">
-    <mat-card class="card">
-        <mat-card-header class="title">Sign In</mat-card-header>
-        <mat-card-content class="box">
+    <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+        <mat-card class="card">
+            <mat-card-header class="title">Sign Up</mat-card-header>
+            <mat-card-content class="box">
 
-
-            <div class="form-container">
                 <mat-form-field class="form-field box">
-                    <mat-label>Enter your email</mat-label>
-                    <input matInput [formControl]="email" required>
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                    <mat-label>Email</mat-label>
+                    <input matInput value=""  formControlName="email" required>
+                        <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Email is required!</mat-error>
+                        <mat-error *ngIf="loginForm.get('email')?.errors?.['email']">Invalid Email!</mat-error>
                 </mat-form-field>
-            </div>
-
-
-            <div class="form-container">
+               
                 <mat-form-field class="form-field box">
-                    <mat-label>Enter your password</mat-label>
-                    <input matInput [formControl]="password" required>
-                    <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+                    <mat-label>Password</mat-label>
+                    <input matInput  value="" formControlName="password">
+                    <mat-error *ngIf="loginForm.get('password')?.errors?.['required']">Password is required!</mat-error>
+                    <mat-error *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 5 characters long!</mat-error>
                 </mat-form-field>
-            </div>
 
-        </mat-card-content>
-        <div class="container">
-            <div class="center">
-                <a mat-flat-button color="accent">Sign In</a>
+            </mat-card-content>
+            <div class="container">
+                <div class="center">
+                    <a mat-flat-button color="accent" type="submit" (click)="formSubmit()">Sign In</a>
+                </div>
             </div>
-        </div>
-    </mat-card>
+        </mat-card>
+    </form>
 </div>
