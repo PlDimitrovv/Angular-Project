@@ -14,16 +14,18 @@ const API_URL = environment.apiUrl
 
 export class AuthService {
     user: any | null = null
-    constructor(private http: HttpClient, private router: Router) { }
-
-
-
+    constructor(private http: HttpClient, private router: Router) {
+        const userCheck = localStorage.getItem('user')
+        if (userCheck) {
+            this.user = JSON.parse(userCheck)
+        }
+    }
 
     register(userData: {}) {
         return this.http.post<IUser>(`${API_URL}/auth/register`, userData).pipe(
             tap((user) => {
                 this.user = user
-                localStorage.setItem('token', user.accessToken)
+                localStorage.setItem('user', JSON.stringify(user))
             })
         )
     }
@@ -31,19 +33,22 @@ export class AuthService {
     login(userData: {}) {
         return this.http.post<IUser>(`${API_URL}/auth/login`, userData).pipe(
             tap((user) => {
-                this.user = user
-                localStorage.setItem('token', user.accessToken)
+                this.user = user 
+                localStorage.setItem('user', JSON.stringify(user))
             })
         )
     }
-    
+
     logout() {
         this.user = null
-        localStorage.removeItem('token')
+        localStorage.removeItem('user')
         this.router.navigate(['/'])
     }
 
-    isLogged() {
+    isLoggedIn(): boolean {
+        return !!this.user
+    }
+    getCurrentUser(): any {
         return this.user
     }
 }

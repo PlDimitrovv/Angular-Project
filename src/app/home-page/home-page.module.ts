@@ -13,6 +13,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 
 
+
 @NgModule({
   declarations: [
     HomeListComponent
@@ -25,6 +26,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatIconModule,
     NgxStarsModule,
     MatGridListModule,
+    NgxStarsModule
   ],
   exports:[
     HomeListComponent

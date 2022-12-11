@@ -9,14 +9,24 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class HeaderComponent {
 
 
-  constructor(private AuthService: AuthService){
-  
+  constructor(private authService: AuthService) {
+    
   }
 
-  isLogged(){
-    return this.AuthService.isLogged()
+  getUsername() {
+    if (this.authService.getCurrentUser()) {
+
+      return this.authService.getCurrentUser().username
+
+    } else {
+      return null
+    }
   }
-  
+
+  isLogged() {
+    return this.authService.isLoggedIn()
+  }
+
 }
 
 

@@ -5,19 +5,28 @@ import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeListComponent } from './home-page/home-list/home-list.component';
+import { ProfileComponent } from './profile/artProfile/profile.component';
+import { BrowseListComponent } from './browse-page/browse-list/browse-list.component';
+import { AuthGuard } from './shared/guard';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: HomeListComponent
+  },
   {
     path: 'home',
     component: HomeListComponent
   },
   {
     path: 'browse',
-    component: HomeListComponent
+    component: BrowseListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'create',
-    component: ArtFormComponent
+    component: ArtFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -30,6 +39,12 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent
+  },
+  {
+    path: 'userProfile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+
   },
 ];
 

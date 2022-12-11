@@ -14,7 +14,7 @@
                 <a mat-flat-button color="accent" class="second-button" routerLink="register">Sign Up</a>
             </ng-container>
             <ng-container *ngIf="isLogged()">
-                <a mat-flat-button color="primary" routerLink="userProfile">{{isLogged().username}} Profile</a>
+                <a mat-flat-button color="primary" routerLink="userProfile">{{getUsername()}} Profile</a>
                 <a mat-flat-button color="accent" class="second-button" routerLink="logout">Logout</a>
             </ng-container>
         </div>

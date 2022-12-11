@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from "./core/core.module"
-import { HomePageModule } from './home-page/home-page.module';
+import { HomePageModule } from './home-page/home-page.module'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,8 +9,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
 import { ArtModule } from './art/art.module';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { appInterceptorProvider } from './app.interceptors';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { ProfileModule } from './profile/profile.module';
+import { BrowsePageModule } from './browse-page/browse-page.module';
 
 
 @NgModule({
@@ -26,10 +29,13 @@ import { appInterceptorProvider } from './app.interceptors';
     HomePageModule,
     RouterModule,
     HttpClientModule,
-    ArtModule
+    ArtModule,
+    ProfileModule,
+    BrowsePageModule
   ],
   providers: [
-    appInterceptorProvider
+    appInterceptorProvider,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

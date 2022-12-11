@@ -13,6 +13,10 @@
     margin-bottom: 15px;
 }
 
+.description-box{
+    width: 320px
+}
+
 .bottom-separator{
     margin-top: 20px;
 }
@@ -26,9 +30,18 @@
    
 }
 
-.button-center{
-    
-    margin-bottom: auto;
+.button1-right{
+
+    position: absolute;
+    right: 10px;
+    top: 50px;
+}
+
+.button2-right{
+
+    position: absolute;
+    right: 60px;
+    top: 50px;
 }
 
 .grid-Style{
@@ -52,8 +65,8 @@
 }
 
 .large-text{
-font:bolder;
-font-size: 1.4em
+font:bold;
+font-size: 1.7em
 }
 
 .small-text{

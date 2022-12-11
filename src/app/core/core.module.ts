@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from '../app-routing.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
@@ -18,7 +19,8 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSidenavModule
   ],
   exports: [
     HeaderComponent,

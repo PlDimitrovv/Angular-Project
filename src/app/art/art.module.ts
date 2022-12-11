@@ -10,11 +10,16 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ArtCardComponent } from './art-card/art-card.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NgxStarsModule } from 'ngx-stars';
 
 
 @NgModule({
   declarations: [
-    ArtFormComponent
+    ArtFormComponent,
+    ArtCardComponent,
   ],
   imports: [
     CommonModule,
@@ -25,11 +30,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     BrowserAnimationsModule,
     MatSelectModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+    MatGridListModule,
+    MatExpansionModule,
+    NgxStarsModule,  
   ],
   exports:[
-    ArtFormComponent
+    ArtFormComponent,
+    ArtCardComponent
   ]
 })
 export class ArtModule { }

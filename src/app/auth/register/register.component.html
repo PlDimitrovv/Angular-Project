@@ -1,3 +1,11 @@
+<div class="text-box">
+    <h1 class="large-text">
+        Create your account Now
+    </h1>
+    <p class="small-text">
+        Or <a routerLink="/login" class="link">log in to your account</a>
+    </p>
+</div>
 <div class="grid-Style">
     <form [formGroup]="registerFrom" (ngSubmit)="formSubmit()">
         <mat-card class="card">
@@ -41,4 +49,4 @@
         </mat-card>
     </form>
 </div>
-{{registerFrom.value | json}}
+
