@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ArtServiceService } from '../art-service.service';
 
 @Component({
   selector: 'app-art-card',
@@ -9,7 +11,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class ArtCardComponent {
   @Input() artCards: any
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, public router: Router, public artService: ArtServiceService) { }
 
   onRatingSet(rating: number): void {
     console.warn(`User set rating to ${rating}`);
@@ -23,4 +25,16 @@ export class ArtCardComponent {
     return false
   }
 
+  editArt(id: string) {
+    this.router.navigate([`/editArt/${id}`])
+
+  }
+
+  deleteArt(id: string) {
+    this.artService.deleteById(id).subscribe({
+      next: () => this.router.navigate(['/']),
+    })
+    
+    this.router.navigate([`/`])
+  }
 }

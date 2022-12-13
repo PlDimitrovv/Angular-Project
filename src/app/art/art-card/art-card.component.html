@@ -26,14 +26,13 @@
                     </p>
 
                     <ng-container *ngIf="isCurrentOwner(card.ownerUsername)">
-                    <div class="button1-right">
-                        <button mat-icon-button color="gray" aria-label="Edit Button">
+                    <div class="button2-right">
+                        <button mat-icon-button color="gray" aria-label="Edit Button" (click)="editArt(card._id)">
                             <mat-icon>edit</mat-icon>
                         </button>
                     </div>
-                    <div class="button2-right">
-                        <button mat-icon-button color="accent" mat-icon-button
-                            aria-label="Delete Button">
+                    <div class="button1-right">
+                        <button mat-icon-button color="accent" mat-icon-button aria-label="Delete Button" (click)="deleteArt(card._id)">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </div>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArtFormComponent } from './art/art-form/art-form.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -8,6 +7,8 @@ import { HomeListComponent } from './home-page/home-list/home-list.component';
 import { ProfileComponent } from './profile/artProfile/profile.component';
 import { BrowseListComponent } from './browse-page/browse-list/browse-list.component';
 import { AuthGuard } from './shared/guard';
+import { ArtEditComponent } from './art/art-edit/art-edit.component';
+import { ArtSubmitComponent } from './art/art-submit/art-submit.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    component: ArtFormComponent,
+    component: ArtSubmitComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -43,6 +44,12 @@ const routes: Routes = [
   {
     path: 'userProfile',
     component: ProfileComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'editArt/:id',
+    component: ArtEditComponent,
     canActivate: [AuthGuard]
 
   },

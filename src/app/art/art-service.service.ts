@@ -12,7 +12,17 @@ export class ArtServiceService {
 
   constructor(private http: HttpClient) { }
 
-  createArt(artData: {}){
-      return this.http.post(`${API_URL}/art`, artData)
+  createArt(artData: {}) {
+    return this.http.post(`${API_URL}/art`, artData)
+  }
+
+  editArt(artData: {}, id: string) {
+    return this.http.put(`${API_URL}/${id}`, artData)
+  }
+  getById(id: string) {
+    return this.http.get(`${API_URL}/${id}`)
+  }
+  deleteById(id: string) {
+    return this.http.delete(`${API_URL}/${id}`)
   }
 }

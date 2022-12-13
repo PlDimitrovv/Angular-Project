@@ -12,8 +12,7 @@ export class BrowseListComponent implements OnInit {
   constructor(private browseService: BrowseService) { }
   
   ngOnInit(): void {
-    console.log(">>>");
-    
     this.browseList = this.browseService.getAll()
   }
+
 }

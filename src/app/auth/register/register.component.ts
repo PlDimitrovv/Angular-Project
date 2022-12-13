@@ -20,16 +20,13 @@ export class RegisterComponent {
   }, {
     validator: this.mustMatch("password", "repass")
   })
-
-  public showPassword: boolean = false;
-  public togglePasswordVisibility(): void {
-    this.showPassword = !this.showPassword;
-  }
-
+  //pass show hide
+  hide = true;
+ 
 
   constructor(private FormBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
-
+//pass match 
   mustMatch(controlName: string, matchControlName: string) {
     return (fg: FormGroup) => {
       const control = fg.controls[controlName]

@@ -14,11 +14,15 @@ import { appInterceptorProvider } from './app.interceptors';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfileModule } from './profile/profile.module';
 import { BrowsePageModule } from './browse-page/browse-page.module';
+import { ArtEditComponent } from './art/art-edit/art-edit.component';
+import { ArtSubmitComponent } from './art/art-submit/art-submit.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ArtEditComponent,
+    ArtSubmitComponent,
   ],
   imports: [
     BrowserModule,
