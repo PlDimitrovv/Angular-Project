@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IArt } from '../shared/interfaces/art';
 import { HttpClient } from '@angular/common/http';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 const API_URL = environment.apiUrl
 
@@ -24,5 +25,8 @@ export class ArtServiceService {
   }
   deleteById(id: string) {
     return this.http.delete(`${API_URL}/${id}`)
+  }
+  likeArt(id:string){
+    return this.http.post(`${API_URL}/like/${id}`, "")
   }
 }

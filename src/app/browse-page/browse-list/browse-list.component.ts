@@ -10,9 +10,18 @@ export class BrowseListComponent implements OnInit {
   public browseList: any
 
   constructor(private browseService: BrowseService) { }
-  
+
+  artLike(event: any) {
+
+    for (let i = 0; i < this.browseList.length; i++) {
+      if (this.browseList[i]._id == event._id) {
+        this.browseList[i] = event
+      }
+    }
+  }
+
   ngOnInit(): void {
-    this.browseList = this.browseService.getAll()
+    this.browseService.getAll().subscribe(arts => this.browseList = arts)
   }
 
 }

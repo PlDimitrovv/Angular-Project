@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ArtCardComponent } from './art-card/art-card.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { NgxStarsModule } from 'ngx-stars';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -33,7 +33,8 @@ import { NgxStarsModule } from 'ngx-stars';
     ReactiveFormsModule,
     MatGridListModule,
     MatExpansionModule,
-    NgxStarsModule,  
+    MatBadgeModule
+    
   ],
   exports:[
     ArtFormComponent,

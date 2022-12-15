@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ArtServiceService } from '../art-service.service';
+
 
 @Component({
   selector: 'app-art-card',
@@ -10,11 +11,22 @@ import { ArtServiceService } from '../art-service.service';
 })
 export class ArtCardComponent {
   @Input() artCards: any
+  @Output() artLiked: EventEmitter<any> = new EventEmitter();
+
+
 
   constructor(public authService: AuthService, public router: Router, public artService: ArtServiceService) { }
 
-  onRatingSet(rating: number): void {
-    console.warn(`User set rating to ${rating}`);
+  likeArt(id: string) {
+    this.artService.likeArt(id).subscribe(art => this.artLiked.emit(art))
+  }
+
+  calculateLikes(art: any) {
+    return art.likes.length
+  }
+
+  isLikedByThisUser(art: any) {
+   return art.likes.some((a: any) => a.userId == this.authService.getCurrentUser()._id)
   }
 
   isCurrentOwner(ownerUsername: string): boolean {
@@ -34,7 +46,7 @@ export class ArtCardComponent {
     this.artService.deleteById(id).subscribe({
       next: () => this.router.navigate(['/']),
     })
-    
+
     this.router.navigate([`/`])
   }
 }

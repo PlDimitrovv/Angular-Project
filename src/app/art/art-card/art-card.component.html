@@ -13,8 +13,13 @@
                 <h5>
                     Category: {{card.artCategory}}
                 </h5>
-                <div>
-                    <ngx-stars (ratingOutput)="onRatingSet($event)"></ngx-stars>
+                <div class="button-like">
+                    <button mat-icon-button color="accent" aria-label="Like Button" (click)="likeArt(card._id)" [disabled]="isLikedByThisUser(card)">
+                        <mat-icon [matBadge]="calculateLikes(card)" matBadgeColor="primary">favorite</mat-icon>
+                    </button>
+                </div>
+                <div class="likes"> 
+                    <h5>Likes:</h5>
                 </div>
             </mat-card-content>
             <mat-expansion-panel class="bottom-separator">
@@ -26,17 +31,18 @@
                     </p>
 
                     <ng-container *ngIf="isCurrentOwner(card.ownerUsername)">
-                    <div class="button2-right">
-                        <button mat-icon-button color="gray" aria-label="Edit Button" (click)="editArt(card._id)">
-                            <mat-icon>edit</mat-icon>
-                        </button>
-                    </div>
-                    <div class="button1-right">
-                        <button mat-icon-button color="accent" mat-icon-button aria-label="Delete Button" (click)="deleteArt(card._id)">
-                            <mat-icon>delete</mat-icon>
-                        </button>
-                    </div>
-                </ng-container>
+                        <div class="button2-right">
+                            <button mat-icon-button color="gray" aria-label="Edit Button" (click)="editArt(card._id)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </div>
+                        <div class="button1-right">
+                            <button mat-icon-button color="accent" mat-icon-button aria-label="Delete Button"
+                                (click)="deleteArt(card._id)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </ng-container>
                 </mat-panel-description>
             </mat-expansion-panel>
         </mat-card>

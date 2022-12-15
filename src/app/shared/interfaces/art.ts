@@ -5,7 +5,7 @@ export interface IArt {
     imageUrl: string,
     artCategory: string,
     description: string,
-    rating: number
+    likes: []
     _id: string,
     owner:IUser
 }

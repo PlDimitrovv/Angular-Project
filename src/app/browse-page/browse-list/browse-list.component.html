@@ -6,4 +6,4 @@
         Find out the best art ideas!
     </p>
 </div>
-<app-art-card [artCards]="browseList | async"></app-art-card>
+<app-art-card [artCards]="browseList" (artLiked)="artLike($event)"></app-art-card>
