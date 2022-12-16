@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HomeService } from '../home.service';
 
 @Component({
   selector: 'app-home-list',
   templateUrl: './home-list.component.html',
   styleUrls: ['./home-list.component.scss']
 })
-export class HomeListComponent {
+export class HomeListComponent implements OnInit{
+  public homeList: any
+
+  constructor(private homeService: HomeService) { }
  
-  onRatingSet(rating: number): void {
-    console.warn(`User set rating to ${rating}`);
-  }
+ngOnInit(): void {
+  this.homeService.getTop3().subscribe(arts => this.homeList = arts)
+}
 
 
 }

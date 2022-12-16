@@ -9,6 +9,7 @@ import { BrowseListComponent } from './browse-page/browse-list/browse-list.compo
 import { AuthGuard } from './shared/guard';
 import { ArtEditComponent } from './art/art-edit/art-edit.component';
 import { ArtSubmitComponent } from './art/art-submit/art-submit.component';
+import { NotfoundComponent } from './core/notfound/notfound.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,11 @@ const routes: Routes = [
     path: 'editArt/:id',
     component: ArtEditComponent,
     canActivate: [AuthGuard]
+
+  },
+  {
+    path: '**',
+    component: NotfoundComponent,
 
   },
 ];

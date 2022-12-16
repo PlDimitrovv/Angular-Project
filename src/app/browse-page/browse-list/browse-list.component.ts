@@ -12,7 +12,6 @@ export class BrowseListComponent implements OnInit {
   constructor(private browseService: BrowseService) { }
 
   artLike(event: any) {
-
     for (let i = 0; i < this.browseList.length; i++) {
       if (this.browseList[i]._id == event._id) {
         this.browseList[i] = event

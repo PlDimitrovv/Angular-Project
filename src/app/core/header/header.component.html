@@ -5,8 +5,9 @@
 
         <a mat-button color="white" routerLink="home">Home</a>
         <a mat-button color="white" routerLink="browse">Browse Art</a>
-        <a mat-button color="white" routerLink="create">Submit Art</a>
-
+        <ng-container *ngIf="isLogged()">
+            <a mat-button color="white" routerLink="create">Submit Art</a>
+        </ng-container>
         <div class="split"></div>
         <div class="margin-toolbar">
             <ng-container *ngIf="!isLogged()">

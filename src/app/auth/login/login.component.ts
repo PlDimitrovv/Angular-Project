@@ -9,6 +9,8 @@ import { AuthService } from "../auth.service"
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  
+  public showPassword: boolean = false;
 
   errors: string | undefined = undefined;
 
@@ -26,6 +28,8 @@ export class LoginComponent {
       next: () => this.router.navigate(['/']),
       error:(err) => {
         this.errors = err.error.error
+      
+        
       }
     })
   }

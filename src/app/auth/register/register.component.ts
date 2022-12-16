@@ -21,7 +21,7 @@ export class RegisterComponent {
     validator: this.mustMatch("password", "repass")
   })
   //pass show hide
-  hide = true;
+  public showPassword: boolean = false;
  
 
   constructor(private FormBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
@@ -39,12 +39,12 @@ export class RegisterComponent {
     }
   }
 
-
   formSubmit(): void {
     this.authService.register(this.registerFrom.value).subscribe({
       next: () => this.router.navigate(['/']),
       error:(err) => {
         this.errors = err.error.error
+        console.log(this.errors);
       }
     })
   }
