@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from "../auth.service"
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +27,7 @@ export class RegisterComponent {
   public showPassword: boolean = false;
  
 
-  constructor(private FormBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private FormBuilder: FormBuilder, private authService: AuthService, private router: Router, private toastrService:ToastrService) { }
 
   //pass match 
   mustMatch(controlName: string, matchControlName: string) {
@@ -46,6 +47,7 @@ export class RegisterComponent {
       next: () => this.router.navigate(['/']),
       error: (err) => {
         this.errors = err.error.error 
+        this.toastrService.error(this.errors, "Error") 
       }
     })
   }

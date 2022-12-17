@@ -32,7 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AuthRootingModule
+    AuthRootingModule,
   ],
   exports:[
     LoginComponent,

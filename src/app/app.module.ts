@@ -16,6 +16,7 @@ import { ProfileModule } from './profile/profile.module';
 import { BrowsePageModule } from './browse-page/browse-page.module';
 import { ArtEditComponent } from './art/art-edit/art-edit.component';
 import { ArtSubmitComponent } from './art/art-submit/art-submit.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ArtSubmitComponent } from './art/art-submit/art-submit.component';
     HttpClientModule,
     ArtModule,
     ProfileModule,
-    BrowsePageModule
+    BrowsePageModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     appInterceptorProvider,
