@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ArtServiceService } from '../art-service.service';
 
@@ -17,7 +17,7 @@ export class ArtFormComponent implements OnInit {
 
   artSubmitFrom = this.FormBuilder.group({
     title: ['', [Validators.required, Validators.minLength(5)]],
-    imageUrl: [" ", [Validators.required, Validators.pattern(/^https?:\/\/.+$/i)]],
+    imageUrl: [{value:" ", disabled: this.isEditing}, [Validators.required, Validators.pattern(/^https?:\/\/.+$/i)]],
     artCategory: ['', [Validators.required]],
     description: ['', [Validators.required, Validators.minLength(10)]],
   }

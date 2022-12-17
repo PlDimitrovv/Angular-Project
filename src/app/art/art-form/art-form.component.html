@@ -11,15 +11,14 @@
                     <mat-error *ngIf="artSubmitFrom.get('title')?.errors?.['minlength']">Title must be at least 5
                         characters long!</mat-error>
                 </mat-form-field>
-                <mat-form-field class="form-field box" >
+                <mat-form-field class="form-field box">
                     <mat-label>Picture URL</mat-label>
                     <input matInput value="" formControlName="imageUrl" placeholder="https://" required>
-                    <mat-error *ngIf="artSubmitFrom.get('imageUrl')?.errors?.['required']">Please add picture!
-                    </mat-error>
                     <mat-error *ngIf="artSubmitFrom.get('imageUrl')?.errors?.['pattern']">Please Enter Valid URL
                     </mat-error>
+                    <mat-error *ngIf="artSubmitFrom.get('imageUrl')?.errors?.['required']">Please add picture!
+                    </mat-error>
                 </mat-form-field>
-
                 <mat-form-field class="form-field box">
                     <mat-label>Category</mat-label>
                     <mat-select matInput value="" formControlName="artCategory" required>
@@ -33,7 +32,8 @@
 
                 <mat-form-field class="form-field box">
                     <mat-label>Description</mat-label>
-                    <textarea cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="6" matInput value="" formControlName="description" required placeholder=""></textarea>
+                    <textarea cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="6" matInput value="" formControlName="description" required placeholder="">
+                    </textarea>
                     <mat-error *ngIf="artSubmitFrom.get('description')?.errors?.['required']">Descriptions is
                         required!</mat-error>
                     <mat-error *ngIf="artSubmitFrom.get('description')?.errors?.['minlength']">Descriptions must be at
@@ -50,3 +50,5 @@
         </mat-card>
     </form>
 </div>
+
+{{isEditing}}

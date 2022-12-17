@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.myArt = this.profileService.getMyArt().subscribe({
+    this.profileService.getMyArt().subscribe({
       next: (arts) => {
         this.myArt = arts
         if (this.myArt.length > 0) {
