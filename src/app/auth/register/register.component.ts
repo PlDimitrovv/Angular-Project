@@ -18,15 +18,17 @@ export class RegisterComponent {
     password: ['', [Validators.required, Validators.minLength(5)]],
     repass: ['', Validators.required]
   }, {
-    validator: this.mustMatch("password", "repass")
+    //custom validator for password match
+    validator: [this.mustMatch("password", "repass")]
   })
-  //pass show hide
+
+  //pass hide
   public showPassword: boolean = false;
  
 
   constructor(private FormBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
-//pass match 
+  //pass match 
   mustMatch(controlName: string, matchControlName: string) {
     return (fg: FormGroup) => {
       const control = fg.controls[controlName]
@@ -42,9 +44,8 @@ export class RegisterComponent {
   formSubmit(): void {
     this.authService.register(this.registerFrom.value).subscribe({
       next: () => this.router.navigate(['/']),
-      error:(err) => {
-        this.errors = err.error.error
-        console.log(this.errors);
+      error: (err) => {
+        this.errors = err.error.error 
       }
     })
   }

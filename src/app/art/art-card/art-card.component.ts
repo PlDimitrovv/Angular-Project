@@ -26,7 +26,10 @@ export class ArtCardComponent {
   }
 
   isLikedByThisUser(art: any) {
-   return art.likes.some((a: any) => a.userId == this.authService.getCurrentUser()._id)
+    if (this.authService.getCurrentUser() == null) {
+      return true
+    }
+    return art.likes.some((a: any) => a.userId == this.authService.getCurrentUser()._id)
   }
 
   isCurrentOwner(ownerUsername: string): boolean {
