@@ -6,4 +6,7 @@
         Find out the best art ideas!
     </p>
 </div>
+<div>
+    <h1 class="no-Submission-text" *ngIf="!isEmpty">There are no submissions!</h1>
+</div>
 <app-art-card [artCards]="browseList" (artLiked)="artLike($event)"></app-art-card>

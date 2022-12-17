@@ -5,5 +5,8 @@
     <p class="small-text">
         Check out our highest liked content!
     </p>
+    <div>
+        <h1 class="no-Submission-text" *ngIf="!isEmpty">There are no submissions!</h1>
+    </div>
 </div>
 <app-art-card [artCards]="homeList"></app-art-card>

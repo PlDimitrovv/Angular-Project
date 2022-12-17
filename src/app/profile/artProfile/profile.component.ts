@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class ProfileComponent implements OnInit {
   public username: string | null
   public myArt: any
+  isEmpty: boolean = true
 
 
   constructor(private profileService: ProfileService, private authService: AuthService) {
@@ -27,6 +28,15 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.myArt = this.profileService.getMyArt()
+    this.myArt = this.profileService.getMyArt().subscribe({
+      next: (arts) => {
+        this.myArt = arts
+        if (this.myArt.length > 0) {
+          this.isEmpty = true
+        } else {
+          this.isEmpty = false
+        }
+      }
+    })
   }
 }
