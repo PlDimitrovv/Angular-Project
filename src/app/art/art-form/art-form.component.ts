@@ -39,6 +39,7 @@ export class ArtFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.artSubmitFrom = this.FormBuilder.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
       imageUrl: [{ value: " ", disabled: this.isEditing }, [Validators.required, Validators.pattern(/^https?:\/\/.+$/i)]],
