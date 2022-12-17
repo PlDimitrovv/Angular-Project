@@ -15,13 +15,7 @@ export class ArtFormComponent implements OnInit {
 
   errors: string | undefined = undefined;
 
-  artSubmitFrom = this.FormBuilder.group({
-    title: ['', [Validators.required, Validators.minLength(5)]],
-    imageUrl: [{value:" ", disabled: this.isEditing}, [Validators.required, Validators.pattern(/^https?:\/\/.+$/i)]],
-    artCategory: ['', [Validators.required]],
-    description: ['', [Validators.required, Validators.minLength(10)]],
-  }
-  )
+  artSubmitFrom: any
 
   constructor(private FormBuilder: FormBuilder, private router: Router, private artService: ArtServiceService) { }
 
@@ -45,8 +39,16 @@ export class ArtFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.artSubmitFrom = this.FormBuilder.group({
+      title: ['', [Validators.required, Validators.minLength(5)]],
+      imageUrl: [{ value: " ", disabled: this.isEditing }, [Validators.required, Validators.pattern(/^https?:\/\/.+$/i)]],
+      artCategory: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.minLength(10)]],
+    })
+
     if (this.isEditing) {
       this.artService.getById(this.artId).subscribe((x: any) => this.artSubmitFrom.patchValue(x))
+
     }
   }
 

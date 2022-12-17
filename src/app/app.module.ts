@@ -16,7 +16,7 @@ import { ProfileModule } from './profile/profile.module';
 import { BrowsePageModule } from './browse-page/browse-page.module';
 import { ArtEditComponent } from './art/art-edit/art-edit.component';
 import { ArtSubmitComponent } from './art/art-submit/art-submit.component';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -37,7 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
     ArtModule,
     ProfileModule,
     BrowsePageModule,
-    ToastrModule.forRoot()
+    ToastNoAnimationModule.forRoot()
   ],
   providers: [
     appInterceptorProvider,
